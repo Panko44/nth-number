@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+// Function to calculate the nth term of the sequence
+int calculateNthTerm(int n) {
+    // Initialize the first four terms
+    int sequence[100]; // Array large enough to hold the sequence
+    sequence[0] = 1;   // n1
+    sequence[1] = 2;   // n2
+    sequence[2] = 3;   // n3
+    sequence[3] = 4;   // n4
+    
+    // If n is 4 or less, return the corresponding term
+    if (n <= 4) {
+        return sequence[n - 1];
+    }
+
+    // Calculate terms from n5 onward
+    for (int i = 4; i < n; i++) {
+        sequence[i] = sequence[i - 1] + sequence[i - 2] + sequence[i - 3] + sequence[i - 4];
+    }
+
+    return sequence[n - 1]; // Return the nth term
+}
+
+int main() {
+    int n = 7; // Example: Calculate the 7th term
+    printf("The %dth term is: %d\n", n, calculateNthTerm(n));
+    return 0;
+}
