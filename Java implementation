@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class Sequence {
+
+    public static int calculateNthTerm(int n) {
+        // Initialize the first four terms
+        ArrayList<Integer> sequence = new ArrayList<>();
+        sequence.add(1); // n1
+        sequence.add(2); // n2
+        sequence.add(3); // n3
+        sequence.add(4); // n4
+        
+        // If n is 4 or less, return the corresponding term
+        if (n <= 4) {
+            return sequence.get(n - 1);
+        }
+        
+        // Calculate terms from n5 onward
+        for (int i = 4; i < n; i++) {
+            int nextTerm = sequence.get(i - 1) + sequence.get(i - 2) + sequence.get(i - 3) + sequence.get(i - 4);
+            sequence.add(nextTerm);
+        }
+
+        return sequence.get(n - 1); // Return the nth term
+    }
+
+    public static void main(String[] args) {
+        int n = 7; // Example: Calculate the 7th term
+        System.out.println("The " + n + "th term is: " + calculateNthTerm(n));
+    }
+}
